@@ -22,6 +22,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Employee extends BaseAudit{
 	
 	//employee data 
@@ -55,7 +57,7 @@ public class Employee extends BaseAudit{
 	@Past
     private LocalDate dob;
 	
-	@Column(length = 40,nullable = false)
+	@Column(length = 40,nullable = false,unique=true)
 	private String email;
 	
 	@Column(name = "phone_number", length = 15, nullable = false, unique = true)
