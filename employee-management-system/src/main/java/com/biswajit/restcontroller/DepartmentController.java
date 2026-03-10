@@ -1,5 +1,7 @@
 package com.biswajit.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,14 @@ public class DepartmentController
 		 DepartmentResponseDto resp = service.getDeptById(deptid);
 		 return new ResponseEntity<DepartmentResponseDto>(resp,HttpStatus.OK);
 		 
+	}
+	
+	//to get all department details
+	@GetMapping("/getall")
+	public ResponseEntity<List<DepartmentResponseDto>> fetchAllDept()
+	{
+		List<DepartmentResponseDto> listDept=service.getAllDept();
+		return new ResponseEntity<List<DepartmentResponseDto>>(listDept,HttpStatus.OK);
 	}
 	
 }

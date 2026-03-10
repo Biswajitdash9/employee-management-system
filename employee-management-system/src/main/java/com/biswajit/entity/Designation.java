@@ -25,6 +25,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Designation extends BaseAudit
 {
 	@Id
