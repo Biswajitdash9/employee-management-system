@@ -30,8 +30,13 @@ public class EmployeeController
 	@PostMapping("/createEmployee")
 	public ResponseEntity<String> createEmployee(@RequestBody EmployeeRequestDto req)
 	{
+		try {
 		String msg=service.createEmployee(req);
 		return new ResponseEntity<String>(msg,HttpStatus.CREATED);
+		}catch(Exception e)
+		{
+			return new ResponseEntity<String>(e.getLocalizedMessage(),HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	//Insertion of multiple Employees
