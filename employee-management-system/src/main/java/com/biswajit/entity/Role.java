@@ -31,7 +31,7 @@ public class Role extends BaseAudit
 	@GeneratedValue(generator = "gen5",strategy = GenerationType.AUTO)
 	private Long roleId;
 	
-	@Column(length = 15,nullable = false)
+	@Column(length = 15,nullable = false,unique = true)
 	private String roleName;
 	
 	//Relation with User table

@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="User_Table")
+@Table(name="Users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,7 +35,7 @@ public class User extends BaseAudit
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "gen3")
 	private Long userId;
 	
-	@Column(length = 30,nullable =false)
+	@Column(length = 30,nullable =false,unique = true)
 	private String userName;
 	
 	@Column(length = 300,nullable=false)
@@ -45,11 +45,11 @@ public class User extends BaseAudit
    //Realtionship   with  employee table
 	//one user->one employee
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "employee_Id")
+	@JoinColumn(name = "employee_Id",unique = true,nullable = false)
 	private Employee employee;
 	
 	//Relationship with Role table.Many To Many 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(name="user_id"),
